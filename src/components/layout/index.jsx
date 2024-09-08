@@ -1,5 +1,6 @@
 import Header from "../nestable/Header";
 import Footer from "../nestable/Footer";
+import Latest from "../nestable/Latest";
 
 //Uses config set global components for the layout
 export default function Layout({ config, children }) {
@@ -8,7 +9,8 @@ export default function Layout({ config, children }) {
     return (
         <>
            <Header blok={config} />
-            <main className="container mx-auto px-4">{children}</main>
+            <main className="">{children}</main>
+            <Latest blok={config} />
             <Footer blok={config} />
         </>
     );

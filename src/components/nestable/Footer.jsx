@@ -8,21 +8,28 @@ export default function Footer({ blok }) {
     
     return (
         <>
-        <span className="block w-full h-0.5 bg-gray-200 shadow-md"></span>
+        <span className="block w-full h-0.5 bg-white mt-8"></span>
         <footer className="bg-white shadow-md p-8">
             <div className="container mx-auto flex flex-col md:flex-row items-start justify-between gap-8 shadow-t-lg">
                 {/* grid 1 title, text, email*/}
-                <div className="flex flex-col md:w-1/2 space-y-4">
-                    <h3 className=" text-xl font-bold">{blok?.footerTitle || 'Default Logo Text'}</h3>
+                <div className="flex flex-col justify-center md:w-1/2 space-y-4">
+                    <h3 className=" text-4xl font-bold sm:text-3xl md:text-4xl lg:text-5xl">{blok?.footerTitle || 'Default Logo Text'}</h3>
                     <p>{blok?.description || 'Default footer Text'} </p>
                      {/* email input fält */}
                     <div className="flex">
+                        <div className="relative w-full pt-4"> 
                     <input 
                         type="email" 
                         placeholder="Email address" 
-                        className="p-2 rounded-md border-transparent focus:border-gray-300 focus:ring-0 hover:border-gray-300 transition duration-300"
-                        // className="border border-gray-300 rounded-md p-2"
+                        className="p-2 pr-32 w-full border border-gray-300 rounded-md focus:border-gray-500 focus:ring-0 transition duration-300"
                     />
+                     <button 
+                type="button" 
+                className="absolute top-1/2 right-0 transform -translate-y-1/2 mt-2 mr-2 px-4 py-2 text-black font-semibold transition-transform duration-300 text-sm hover:text-base"
+            >
+                Sign Up
+            </button>
+            </div>
                 </div>
                 </div>
                
