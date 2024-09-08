@@ -13,10 +13,7 @@ export class StoryblokCMS {
     if (!params) return {};
     const uri = params?.slug?.join("/");
     const storyUrl = "cdn/stories/" + uri;
-    const { data } = await this.sbGet(
-      storyUrl,
-      this.getDefaultSBParams()
-    );
+    const { data } = await this.sbGet(storyUrl, this.getDefaultSBParams());
     return data.story;
   }
 
@@ -34,7 +31,7 @@ export class StoryblokCMS {
         "cdn/stories/config",
         this.getDefaultSBParams()
       );
-      return data?.story;
+      return data?.story?.content || {};
     } catch (error) {
       console.log("CONFIG ERROR", error);
       return {};
