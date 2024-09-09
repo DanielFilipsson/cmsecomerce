@@ -9,6 +9,8 @@ import RichTextDefault from "@/components/nestable/RichText";
 import Header from "@/components/nestable/Header";
 import Footer from "@/components/nestable/Footer";
 import Latest from "@/components/nestable/Latest";
+import MainPage from "@/components/content-types/MainPage";
+import AboutUs from "@/components/content-types/AboutUs";
 
 const components = {
   "page": Page,
@@ -16,7 +18,9 @@ const components = {
   "richtext": RichTextDefault,
   "header": Header,
   "footer": Footer,
-  "latest": Latest
+  "latest": Latest,
+  "startPage": MainPage,
+  "aboutUs": AboutUs
 }
 
 storyblokInit({
