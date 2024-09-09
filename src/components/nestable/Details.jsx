@@ -20,15 +20,3 @@ export default function ProductDetails({blok}) {
         </section>
     )
 }
-
-
-{/* <div className="w-full md:w-1/2">
-            <img
-             src={blok.productImage.filename}
-             alt={blok.productImage.alt || 'Image'}
-             width={500}
-             height={150}
-             className="rounded-md shadow-md"
-             layout="responsive"
-            />
-            </div> */}
