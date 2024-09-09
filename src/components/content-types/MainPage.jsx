@@ -2,7 +2,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export default function MainPage({ blok }) {
-    console.log(blok);
   return (
     <section className="flex flex-col items-center justify-center w-full min-h-screen p-8 space-y-8 text-center">
       <h1 className="text-5xl font-bold text-black">{blok.title || 'Default Title'}</h1>
