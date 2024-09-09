@@ -1,4 +1,29 @@
 import { getStoryblokApi } from "@storyblok/react/rsc";
+import StoryblokClient from "storyblok-js-client";
+// lagt till ovan rad/elin
+
+const Storyblok = new StoryblokClient({
+  accessToken: process.env.NEXT_PUBLIC_PREVIEW_STORYBLOK_TOKEN,
+  cache: {
+    clear: "auto",
+    type: "memory",
+  },
+});
+
+export async function getProducts() {
+  try {
+    const response = await Storyblok.get("cdn/stories", {
+      starts_with: "products/",
+      version: "draft",
+    });
+    console.log("Fetched products:", response.data.stories);
+    return response.data.stories;
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    return [];
+  }
+}
+
 export class StoryblokCMS {
   static IS_PROD = process.env.NODE_ENV === "production";
   static IS_DEV = process.env.NODE_ENV === "development";
@@ -8,6 +33,19 @@ export class StoryblokCMS {
   static async sbGet(path, params) {
     return getStoryblokApi().get(path, params);
   }
+
+  // static async getProducts() {
+  //   try {
+  //     const response = await Storyblok.get("cdn/stories", {
+  //       starts_with: "products/",
+  //       version: "draft",
+  //     });
+  //     return response.data.stories;
+  //   } catch (error) {
+  //     console.error("Error fetching products:", error);
+  //     return [];
+  //   }
+  // }
 
   static async getStory(params) {
     if (!params) return {};

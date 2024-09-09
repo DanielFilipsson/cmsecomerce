@@ -1,6 +1,20 @@
+import { useEffect, useState } from "react";
+import { getProducts } from "@/utils/cms"
+
 export default function ProductList({ blok }) {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    async function fetchProducts() {
+      const fetchedProducts = await getProducts();
+      console.log("Fetched products in useEffect:", fetchedProducts);
+      setProducts(fetchedProducts);
+    }
+    fetchProducts();
+  }, []);
   
-    return (
+  
+    return (  
       <section className="container mx-auto p-8">
         <div className="flex flex-col items-start w-1/2"> 
         <div>
@@ -19,6 +33,17 @@ export default function ProductList({ blok }) {
           </a>
         ))}
       </div>
+      </div>
+
+      {/* products */}
+      <div className="mt-8">
+        {products.map((product) => (
+          <div key={product.uuid} className="mb-8">
+            <img src={product.content.productImage.filename} alt={product.content.productTitle} className="w-full h-auto" />
+            <h3 className="text-2xl font-semibold mt-4">{product.content.productTitle}</h3>
+            <p className="text-lg text-gray-700">{product.content.price}</p>
+          </div>
+        ))}
       </div>
       </section>
     );
