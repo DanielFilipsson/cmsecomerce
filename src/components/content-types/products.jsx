@@ -36,9 +36,9 @@ export default function ProductList({ blok }) {
       </div>
 
       {/* products */}
-      <div className="mt-8">
+      <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-7xl gap-4 p-12 ">
         {products.map((product) => (
-          <div key={product.uuid} className="mb-8">
+          <div key={product.uuid} className="mb-8 flex flex-col border p-2 rounded-md shadow-md w-full">
             <img src={product.content.productImage.filename} alt={product.content.productTitle} className="w-full h-auto" />
             <h3 className="text-2xl font-semibold mt-4">{product.content.productTitle}</h3>
             <p className="text-lg text-gray-700">{product.content.price}</p>
