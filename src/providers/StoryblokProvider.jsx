@@ -24,7 +24,7 @@ const components = {
   "startPage": MainPage,
   "aboutUs": AboutUs,
   "productList": ProductList,
-  "details": ProductDetails
+  "product": ProductDetails
 }
 
 storyblokInit({
