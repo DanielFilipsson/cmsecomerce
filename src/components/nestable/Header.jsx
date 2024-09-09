@@ -3,8 +3,6 @@ import Link from 'next/link';
 
 export default function Header({ blok }) {
 
-    console.log("header data", blok);
-
     // const { logo, logoText, headerNav } = blok?.content || {};
     
     return (

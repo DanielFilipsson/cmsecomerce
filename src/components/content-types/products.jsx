@@ -1,27 +1,25 @@
 export default function ProductList({ blok }) {
-    console.log(blok);
+  
     return (
       <section className="container mx-auto p-8">
-        <h2 className="text-4xl font-bold text-center mb-8">Our Products</h2>
-        {blok.products && blok.products.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-            {blok.products.map((product) => (
-              <div key={product._uid} className="border rounded-lg shadow-md p-4">
-                {product.image && (
-                  <img
-                    src={product.image.filename}
-                    alt={product.image.alt || 'Product Image'}
-                    className="w-full h-48 object-cover mb-4 rounded"/>
-                )}
-                <h3 className="text-xl font-semibold mb-2">{product.title || 'Product Title'}</h3>
-                <p className="text-gray-700 mb-2">Size: {product.size || 'N/A'}</p>
-                <p className="text-lg font-bold text-gray-900">{product.price ? `$${product.price}` : 'Price Unavailable'}</p>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <p className="text-center text-gray-500">No products available</p>
-        )}
+        <div className="flex flex-col items-start w-1/2"> 
+        <div>
+        <h2 className="text-4xl font-bold mb-8"> {blok.title} </h2>
+        <p className="text-lg flex-wrap text-black">{blok?.text || 'Default description text.'}</p>
+        </div>
+       
+        <div className="flex flex-wrap justify-center space-x-2 mt-8">
+        {blok.productLinks?.map((linkItem) => (
+          <a
+            key={linkItem._uid}
+            href={linkItem.link.cached_url || '#'}
+            className="inline-block px-4 py-1 border border-gray-800 bg-white text-black font-semibold rounded hover:bg-gray-200 transition duration-300"
+          >
+            {linkItem.linkTitle}
+          </a>
+        ))}
+      </div>
+      </div>
       </section>
     );
   }

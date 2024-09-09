@@ -22,7 +22,7 @@ const components = {
   "latest": Latest,
   "startPage": MainPage,
   "aboutUs": AboutUs,
-  "product": ProductList
+  "productList": ProductList
 }
 
 storyblokInit({
