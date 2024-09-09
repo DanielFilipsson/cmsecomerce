@@ -12,6 +12,7 @@ import Latest from "@/components/nestable/Latest";
 import MainPage from "@/components/content-types/MainPage";
 import AboutUs from "@/components/content-types/AboutUs";
 import ProductList from "@/components/content-types/products"
+import ProductDetails from "@/components//nestable/Details"
 
 const components = {
   "page": Page,
@@ -22,7 +23,8 @@ const components = {
   "latest": Latest,
   "startPage": MainPage,
   "aboutUs": AboutUs,
-  "productList": ProductList
+  "productList": ProductList,
+  "details": ProductDetails
 }
 
 storyblokInit({
