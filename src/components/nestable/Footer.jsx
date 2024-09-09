@@ -3,8 +3,6 @@ import Link from 'next/link';
 
 export default function Footer({ blok }) {
 
-    console.log("footer data", blok.footerTitle);
-
     
     return (
         <>
