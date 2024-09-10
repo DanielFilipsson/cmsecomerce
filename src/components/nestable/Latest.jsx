@@ -10,7 +10,7 @@ export default function Latest({ blok }) {
                     {blok?.latestButton && (
                         <div className="flex justify-center w-full">
                             <a 
-                                href={blok.latestButton.url || '#'} 
+                                href={blok.latestButton.cached_url || '#'} 
                                 title={blok.latestButton.title || 'Click here'} 
                                 rel={blok.latestButton.rel || 'noopener noreferrer'}
                                 className="inline-block px-6 py-3 border border-gray-800 bg-white text-black font-semibold rounded hover:bg-gray-200 transition duration-300"
