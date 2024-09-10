@@ -6,7 +6,7 @@ export default function Latest({ blok }) {
                 {/* Text container */}
                 <div className="flex flex-col items-center w-full md:w-1/2 space-y-4">                         
                     <h1 className="text-5xl font-bold text-black">{blok?.latestTitle || 'Default Title'}</h1>
-                    <p className="text-lg text-black">{blok?.description || 'Default description text.'}</p>
+                    <p className="text-lg text-black">{blok?.latestDescription || 'Default description text.'}</p>
                     {blok?.latestButton && (
                         <div className="flex justify-center w-full">
                             <a 
