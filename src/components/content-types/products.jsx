@@ -40,7 +40,6 @@ export default function ProductList({ blok }) {
         </Link>
       </div>
 
-      {/* products */}
       <div className="flex justify-center"> 
       <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-7xl gap-4 p-12 ">
         {products.map((product) => (

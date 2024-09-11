@@ -1,31 +1,23 @@
-import { StoryBlokUtils } from "@/utils/cms";
-import { storyblokInit, apiPlugin } from "@storyblok/react/rsc";
-
-
-storyblokInit({
-  accessToken: "DIN_ACCESS_TOKEN_HÄR", //Lägg in TOKEN när den är klar!
-  use: [apiPlugin],
-});
-
 export default async function sitemap() {
   try {
-    const pages = (await StoryBlokUtils.getStaticPaths()).filter(
-      (path) => path?.slug?.[0] !== "config" 
-    );
+    const pages = await StoryblokCMS.getStaticPaths();
+    console.log("Fetched pages for sitemap:", pages);
 
-    const sitemap = pages.map((page) => {
-      const slug = page?.slug.filter((item) => item !== ""); 
-      let finalSlug = slug?.length > 0 ? slug.join("/") : ""; 
+    if (pages.length === 0) {
+      console.error("No pages fetched for sitemap.");
+      return [];
+    }
 
-      const url = `https://www.example.com/${finalSlug}`; //skriv in webbplats efter deploy
-      return {
-        url: url,
-        lastModified: new Date(),
-        priority: 1, 
-      };
-    });
+    // Generera sitemap-urls baserat på de sidor som hämtas
+    const urls = pages.map((page) => ({
+      loc: `https://cmsecomerce.vercel.app/${page.slug.join("/")}`,
+      lastmod: new Date().toISOString(),
+    }));
 
-    return sitemap;
+    return urls.map((url) => ({
+      url: url.loc,
+      lastmod: url.lastmod,
+    }));
   } catch (error) {
     console.error("Error generating sitemap:", error);
     return [];

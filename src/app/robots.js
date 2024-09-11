@@ -7,6 +7,6 @@ export default function robots() {
         disallow: "/api/",
       },
     ],
-    sitemap: `https://localhost:3010//sitemap.xml`, //skriv in webbplats efter deploy
+    sitemap: `https://cmsecomerce.vercel.app/sitemap.xml`,
   };
 }
