@@ -17,7 +17,7 @@ export default function ProductList({ blok }) {
   
     return (  
       <section className="container mx-auto p-8"> 
-        <div className="flex flex-col items-start w-1/2 space-y-4"> 
+        <div className="flex flex-col items-start w-full space-y-4 sm:items-start sm:w-1/2"> 
         <div>
         <h2 className="text-4xl font-bold mb-8"> {blok.title} </h2>
         <p className="text-lg flex-wrap text-black">{blok?.text || 'Default description text.'}</p>
@@ -41,19 +41,32 @@ export default function ProductList({ blok }) {
       </div>
 
       {/* products */}
-      <div className="flex justify-center"> 
-      <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-7xl gap-4 p-12 ">
-        {products.map((product) => (
-            <Link key={product.uuid} href={`/products/${product.slug}`}> 
-          <div key={product.uuid} className="mb-8 flex flex-col border p-2 rounded-md shadow-md w-full transition-transform duration-300 transform hover:scale-105 hover:shadow-xl hover:bg-gray-100">
-            <img src={product.content.productImage.filename} alt={product.content.productTitle} className="w-full h-auto" />
-            <h3 className="text-2xl font-semibold mt-4">{product.content.productTitle}</h3>
-            <p className="text-lg text-gray-700">{product.content.price}</p>
+      <div className="flex justify-center px-4 sm:px-8">
+  <div className="mt-8 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-full gap-4 p-6 sm:p-8 lg:p-12">
+    {products.map((product) => (
+      <Link key={product.uuid} href={`/products/${product.slug}`}>
+        <div key={product.uuid} className="flex flex-col border p-4 rounded-md shadow-md w-full max-w-sm transition-transform duration-300 transform hover:scale-105 hover:shadow-xl hover:bg-gray-100">
+          <div className="relative mb-4 flex-shrink-0">
+            <img 
+              src={product.content.productImage.filename} 
+              alt={product.content.productTitle} 
+              className="w-full h-60 object-cover rounded-md" 
+            />
           </div>
-          </Link>
-        ))}
-      </div>
-      </div>
+          <div className="flex flex-col flex-grow">
+            <h3 className="text-lg sm:text-xl md:text-2xl font-semibold mb-2">{product.content.productTitle}</h3>
+            <p className="text-lg font-bold text-gray-900">{product.content.price}</p>
+          </div>
+        </div>
+      </Link>
+    ))}
+  </div>
+</div>
+
+
+
+
+
       </section>
     );
   }
