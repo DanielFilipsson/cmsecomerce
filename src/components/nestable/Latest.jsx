@@ -6,11 +6,11 @@ export default function Latest({ blok }) {
                 {/* Text container */}
                 <div className="flex flex-col items-center w-full md:w-1/2 space-y-4">                         
                     <h1 className="text-5xl font-bold text-black">{blok?.latestTitle || 'Default Title'}</h1>
-                    <p className="text-lg text-black">{blok?.description || 'Default description text.'}</p>
+                    <p className="text-lg text-black">{blok?.latestDescription || 'Default description text.'}</p>
                     {blok?.latestButton && (
                         <div className="flex justify-center w-full">
                             <a 
-                                href={blok.latestButton.url || '#'} 
+                                href={blok.latestButton.cached_url || '#'} 
                                 title={blok.latestButton.title || 'Click here'} 
                                 rel={blok.latestButton.rel || 'noopener noreferrer'}
                                 className="inline-block px-6 py-3 border border-gray-800 bg-white text-black font-semibold rounded hover:bg-gray-200 transition duration-300"
