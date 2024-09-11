@@ -14,6 +14,7 @@ import AboutUs from "@/components/content-types/AboutUs";
 import ProductList from "@/components/content-types/products"
 import ProductDetails from "@/components//nestable/Details"
 import Hero from "@/components/nestable/Hero";
+import Divider from "@/components/nestable/Divider";
 
 const components = {
   "page": Page,
@@ -26,7 +27,8 @@ const components = {
   // "startPage": MainPage,
   "aboutUs": AboutUs,
   "productList": ProductList,
-  "product": ProductDetails 
+  "product": ProductDetails,
+  "divider": Divider
   
 }
 
