@@ -26,7 +26,7 @@ export default function Header({ blok }) {
                     <input 
                         type="text" 
                         placeholder="Search..." 
-                        className="p-2 rounded-md border-transparent focus:border-gray-300 focus:ring-0 hover:border-gray-300 transition duration-300"
+                        className="p-2 rounded-md bg-white border-transparent focus:border-gray-300 focus:ring-0 hover:border-gray-300 transition duration-300"
                         // className="border border-gray-300 rounded-md p-2"
                     />
                 </div>
