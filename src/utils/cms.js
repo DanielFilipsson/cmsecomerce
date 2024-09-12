@@ -16,10 +16,10 @@ export async function getProducts() {
       starts_with: "products/",
       version: "draft",
     });
-    console.log("Fetched products:", response.data.stories);
+    // console.log("Fetched products:", response.data.stories);
     return response.data.stories;
   } catch (error) {
-    console.error("Error fetching products:", error);
+    // console.error("Error fetching products:", error);
     return [];
   }
 }
@@ -71,7 +71,7 @@ export class StoryblokCMS {
       );
       return data?.story?.content || {};
     } catch (error) {
-      console.log("CONFIG ERROR", error);
+      // console.log("CONFIG ERROR", error);
       return {};
     }
   }
@@ -115,7 +115,7 @@ static async getStaticPaths() {
 
     return paths;
   } catch (error) {
-    console.log("PATHS ERROR", error);
+    // console.log("PATHS ERROR", error);
   }
 }
   
@@ -123,39 +123,3 @@ static async getStaticPaths() {
 
 
 }
-
-
-
-
-
-
-// static async getStaticPaths() {
-//   try {
-//     const sbParams = {
-//       version: this.VERSION,
-//     };
-
-//     const { data } = await this.sbGet("cdn/links/", sbParams);
-//     const paths = [];
-
-//     Object.keys(data.links).forEach((linkKey) => {
-//       const link = data.links[linkKey];
-//       if (link.is_folder || link.slug === "home") {
-//         return;
-//       }
-
-//       const slug = link.slug.split("/");
-
-//       if (slug.length > 0) {
-//         paths.push({
-//           slug,
-//         });
-//       }
-//     });
-
-//     return paths;
-//   } catch (error) {
-//     console.log("PATHS ERROR", error);
-//     return [];
-//   }
-// }
