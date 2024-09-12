@@ -1,28 +1,28 @@
+import { StoryblokCMS } from "@/utils/cms";
+import { storyblokInit, apiPlugin } from "@storyblok/react/rsc";
+
+
+storyblokInit({
+  accessToken: process.env.NEXT_PUBLIC_PREVIEW_STORYBLOK_TOKEN,  
+  use: [apiPlugin],
+});
+
 export default async function sitemap() {
   try {
     const pages = await StoryblokCMS.getStaticPaths();
-    console.log("Fetched pages for sitemap:", pages);
 
-    if (pages.length === 0) {
-      console.error("No pages fetched for sitemap.");
-      return [];
-    }
-
-    // Generera sitemap-urls baserat på de sidor som hämtas
-    const urls = pages.map((page) => ({
-      loc: `https://cmsecomerce.vercel.app/${page.slug.join("/")}`,
-      lastmod: new Date().toISOString(),
-    }));
-
-    return urls.map((url) => ({
-      url: url.loc,
-      lastmod: url.lastmod,
-    }));
+    const sitemap = pages.map((page) => {
+      const currentUrl = page.slug;
+      return {
+        url: currentUrl,
+        lastMOdified: new Date(),
+        priority: 1,
+      };
+    });
+    console.log(sitemap)
+    return sitemap;
   } catch (error) {
-    console.error("Error generating sitemap:", error);
-    return [];
+    console.error(error);
+    return[];
   }
 }
-
-
-

@@ -18,7 +18,7 @@ export async function getProducts() {
     });
     return response.data.stories;
   } catch (error) {
-    console.error("Error fetching products:", error);
+    // console.error("Error fetching products:", error);
     return [];
   }
 }
@@ -70,7 +70,7 @@ export class StoryblokCMS {
       );
       return data?.story?.content || {};
     } catch (error) {
-      console.log("CONFIG ERROR", error);
+      // console.log("CONFIG ERROR", error);
       return {};
     }
   }
@@ -87,7 +87,7 @@ export class StoryblokCMS {
     };
   }
 
-  //Generates static paths from Links API endpoint
+  // Generates static paths from Links API endpoint
   static async getStaticPaths() {
     try {
       let sbParams = {
@@ -113,7 +113,7 @@ export class StoryblokCMS {
 
       return paths;
     } catch (error) {
-      console.log("PATHS ERROR", error);
+      // console.log("PATHS ERROR", error);
     }
   }
 }

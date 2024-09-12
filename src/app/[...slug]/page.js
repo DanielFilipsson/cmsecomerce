@@ -9,7 +9,7 @@ export async function generateStaticParams() {
     const paths = await StoryblokCMS.getStaticPaths();
     return paths;
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 }
 
