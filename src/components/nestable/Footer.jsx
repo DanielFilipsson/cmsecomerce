@@ -7,7 +7,7 @@ export default function Footer({ blok }) {
     return (
         <>
         <span className="block w-full h-0.5 bg-white mt-8"></span>
-        <footer className="bg-white shadow-md p-8">
+        <footer className="bg-[#EFEDE3] shadow-md p-8">
             <div className="container mx-auto flex flex-col md:flex-row items-start justify-between gap-8 shadow-t-lg">
                 {/* grid 1 title, text, email*/}
                 <div className="flex flex-col justify-center md:w-1/2 space-y-4">
