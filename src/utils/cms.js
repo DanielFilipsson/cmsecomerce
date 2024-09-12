@@ -88,33 +88,74 @@ export class StoryblokCMS {
     };
   }
 
-  //Generates static paths from Links API endpoint
-  static async getStaticPaths() {
-    try {
-      let sbParams = {
-        version: this.VERSION,
-      };
 
-      let { data } = await this.sbGet("cdn/links/", sbParams);
-      let paths = [];
+// Generates static paths from Links API endpoint
+static async getStaticPaths() {
+  try {
+    let sbParams = {
+      version: this.VERSION,
+    };
 
-      Object.keys(data.links).forEach((linkKey) => {
-        const link = data.links[linkKey];
-        if (link.is_folder || link.slug === "home") {
-          return;
-        }
-        let slug = link.slug === "home" ? [] : link.slug;
+    let { data } = await this.sbGet("cdn/links/", sbParams);
+    let paths = [];
 
-        if (slug != "") {
-          paths.push({
-            slug: slug.split("/"),
-          });
-        }
-      });
+    Object.keys(data.links).forEach((linkKey) => {
+      const link = data.links[linkKey];
+      if (link.is_folder || link.slug === "home") {
+        return;
+      }
+      let slug = link.slug === "home" ? [] : link.slug;
 
-      return paths;
-    } catch (error) {
-      console.log("PATHS ERROR", error);
-    }
+      if (slug != "") {
+        paths.push({
+          slug: slug.split("/"),
+        });
+      }
+    });
+
+    return paths;
+  } catch (error) {
+    console.log("PATHS ERROR", error);
   }
 }
+  
+
+
+
+}
+
+
+
+
+
+
+// static async getStaticPaths() {
+//   try {
+//     const sbParams = {
+//       version: this.VERSION,
+//     };
+
+//     const { data } = await this.sbGet("cdn/links/", sbParams);
+//     const paths = [];
+
+//     Object.keys(data.links).forEach((linkKey) => {
+//       const link = data.links[linkKey];
+//       if (link.is_folder || link.slug === "home") {
+//         return;
+//       }
+
+//       const slug = link.slug.split("/");
+
+//       if (slug.length > 0) {
+//         paths.push({
+//           slug,
+//         });
+//       }
+//     });
+
+//     return paths;
+//   } catch (error) {
+//     console.log("PATHS ERROR", error);
+//     return [];
+//   }
+// }

@@ -7,6 +7,6 @@ export default function robots() {
         disallow: "/api/",
       },
     ],
-    sitemap: `https://cmsecomerce.vercel.app/sitemap.xml`,
+    sitemap: "https://cmsecomerce.vercel.app/sitemap.xml",
   };
 }
