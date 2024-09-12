@@ -9,7 +9,6 @@ import RichTextDefault from "@/components/nestable/RichText";
 import Header from "@/components/nestable/Header";
 import Footer from "@/components/nestable/Footer";
 import Latest from "@/components/nestable/Latest";
-// import MainPage from "@/components/content-types/MainPage";
 import AboutUs from "@/components/content-types/AboutUs";
 import ProductList from "@/components/content-types/products"
 import ProductDetails from "@/components//nestable/Details"
@@ -24,7 +23,6 @@ const components = {
   "footer": Footer,
   "latest": Latest,
   "hero": Hero,
-  // "startPage": MainPage,
   "aboutUs": AboutUs,
   "productList": ProductList,
   "product": ProductDetails,

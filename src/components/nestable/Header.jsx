@@ -27,7 +27,6 @@ export default function Header({ blok }) {
 
 
     useEffect(() => {
-        // Filtrera produkterna baserat på sökord
         const results = products.filter((product) =>
             product?.content?.productTitle?.toLowerCase().includes(searchTerm.toLowerCase())
         );
@@ -39,11 +38,10 @@ export default function Header({ blok }) {
 
     const handleInputChange = (e) => {
         const value = e.target.value;
-        setSearchTerm(value); // Uppdatera sökordet direkt och filtrera produkter
+        setSearchTerm(value);
     };
 
     const handleLinkClick = () => {
-        // Töm sökfältet och stäng dropdownen
         setSearchTerm('');
         setProductDropdown(false);
     };
@@ -53,7 +51,7 @@ export default function Header({ blok }) {
         <header className="bg-white shadow-md p-4">
             <div className="container mx-auto flex items-center justify-start space-x-6">
                 {/* Logo */}
-                <div className="flex items-center space-x-6">
+                <div className="flex relative items-center space-x-6">
                     <span className="ml-2 text-xl hidden sm:inline font-bold">{blok?.headerLogo || 'Default Logo Text'}</span>
                 
                 {/* Navigation Links */}
@@ -64,10 +62,11 @@ export default function Header({ blok }) {
                         </Link>
                     ))}
                 </nav>
+               
                 </div>
 
                 <div className="relative">
-          <button onClick={toggleDropdown} className="text-black hover:underline">
+                <button onClick={toggleDropdown} className="text-black hover:underline">
             Products
           </button>
           {isDropdownOpen && (
@@ -101,7 +100,6 @@ export default function Header({ blok }) {
                             {filteredProducts.map((product) => (
                                 <li key={product.uuid} className="flex items-center p-2 hover:bg-gray-100">
                                     <Link href={`/products/${product.slug}`} className="flex items-center gap-2"  onClick={handleLinkClick}>
-                                        {/* Bilden visas bredvid produktens titel */}
                                         <img 
                                             src={product.content.productImage.filename} 
                                             alt={product.content.productTitle} 
