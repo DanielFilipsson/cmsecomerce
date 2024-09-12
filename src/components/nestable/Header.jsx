@@ -1,39 +1,65 @@
-import Link from 'next/link';
+"use client";
 
+import Link from 'next/link';
+import { useState, useEffect } from 'react';
+import { getProducts } from '@/utils/cms'; 
 
 export default function Header({ blok }) {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [products, setProducts] = useState([]);
 
-    // const { logo, logoText, headerNav } = blok?.content || {};
-    
-    return (
-        <header className="bg-white shadow-md p-4">
-            <div className="container mx-auto flex items-center justify-start space-x-6">
-                {/* Logo */}
-                <div className="flex items-center space-x-6">
-                    <span className="ml-2 text-xl hidden sm:inline font-bold">{blok?.headerLogo || 'Default Logo Text'}</span>
-                
-                {/* Navigation Links */}
-                <nav className="flex space-x-4">
-                    {blok?.headerLinks?.map((item) => (
-                        <Link key={item._uid} className="text-black hover:underline" href={item.link.cached_url || '#'}>
-                            {item.linkTitle}
-                        </Link>
-                    ))}
-                </nav>
-                </div>
-                 {/* Input Field */}
-                <div className="flex items-center">
-                    <input 
-                        type="text" 
-                        placeholder="Search..." 
-                        className="p-2 rounded-md bg-white border-transparent focus:border-gray-300 focus:ring-0 hover:border-gray-300 transition duration-300"
-                        // className="border border-gray-300 rounded-md p-2"
-                    />
-                </div>
+  useEffect(() => {
+    async function fetchProducts() {
+      const fetchedProducts = await getProducts();
+      setProducts(fetchedProducts);
+    }
+    fetchProducts();
+  }, []);
 
-            </div>
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
 
+  return (
+    <header className="bg-white shadow-md p-4">
+      <div className="container mx-auto flex items-center justify-between">
+        <div className="flex items-center space-x-6">
+          <span className="ml-2 text-xl hidden sm:inline font-bold">{blok?.headerLogo || 'Default Logo Text'}</span>
+        
+          <nav className="flex space-x-4">
+            {blok?.headerLinks?.map((item) => (
+              <Link key={item._uid} className="text-black hover:underline" href={item.link.cached_url || '#'}>
+                {item.linkTitle}
+              </Link>
+            ))}
+          </nav>
+        </div>
 
-        </header>
-    );
+        <div className="relative">
+          <button onClick={toggleDropdown} className="text-black hover:underline">
+            Products
+          </button>
+          {isDropdownOpen && (
+            <ul className="absolute bg-white border border-gray-200 rounded-md mt-2 shadow-lg">
+              {products.map((product) => (
+                <li key={product.uuid} className="p-2 hover:bg-gray-100">
+                  <Link href={`/products/${product.slug}`}>
+                    {product.content.productTitle}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+
+        <div className="flex items-center">
+          <input 
+            type="text" 
+            placeholder="Search..." 
+            className="p-2 rounded-md bg-white border-transparent focus:border-gray-300 focus:ring-0 hover:border-gray-300 transition duration-300"
+          />
+        </div>
+      </div>
+    </header>
+  );
 }
