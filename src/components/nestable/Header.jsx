@@ -10,6 +10,7 @@ export default function Header({ blok }) {
     const [searchTerm, setSearchTerm] = useState(''); 
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [tempSearchTerm, setTempSearchTerm] = useState('');
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     const toggleDropdown = () => {
         setIsDropdownOpen(!isDropdownOpen);
@@ -53,6 +54,24 @@ export default function Header({ blok }) {
                     ))}
                 </nav>
                 </div>
+
+                <div className="relative">
+          <button onClick={toggleDropdown} className="text-black hover:underline">
+            Products
+          </button>
+          {isDropdownOpen && (
+            <ul className="absolute bg-white border border-gray-200 rounded-md mt-2 shadow-lg">
+              {products.map((product) => (
+                <li key={product.uuid} className="p-2 hover:bg-gray-100">
+                  <Link href={`/products/${product.slug}`}>
+                    {product.content.productTitle}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+
                  {/* Input Field */}
                 <div className="flex items-center">
                     <input 
