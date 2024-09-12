@@ -16,7 +16,6 @@ export async function getProducts() {
       starts_with: "products/",
       version: "draft",
     });
-    console.log("Fetched products:", response.data.stories);
     return response.data.stories;
   } catch (error) {
     console.error("Error fetching products:", error);

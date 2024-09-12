@@ -8,7 +8,6 @@ export default function ProductList({ blok }) {
   useEffect(() => {
     async function fetchProducts() {
       const fetchedProducts = await getProducts();
-      console.log("Fetched products in useEffect:", fetchedProducts);
       setProducts(fetchedProducts);
     }
     fetchProducts();
