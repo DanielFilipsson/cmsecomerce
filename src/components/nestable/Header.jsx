@@ -11,6 +11,10 @@ export default function Header({ blok }) {
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [tempSearchTerm, setTempSearchTerm] = useState('');
 
+    const toggleDropdown = () => {
+        setIsDropdownOpen(!isDropdownOpen);
+      };
+
     useEffect(() => {
       async function fetchProducts() {
         const fetchedProducts = await getProducts();
