@@ -18,7 +18,7 @@ export async function getProducts() {
     });
     return response.data.stories;
   } catch (error) {
-    // console.error("Error fetching products:", error);
+    console.error("Error fetching products:", error);
     return [];
   }
 }
@@ -32,19 +32,6 @@ export class StoryblokCMS {
   static async sbGet(path, params) {
     return getStoryblokApi().get(path, params);
   }
-
-  // static async getProducts() {
-  //   try {
-  //     const response = await Storyblok.get("cdn/stories", {
-  //       starts_with: "products/",
-  //       version: "draft",
-  //     });
-  //     return response.data.stories;
-  //   } catch (error) {
-  //     console.error("Error fetching products:", error);
-  //     return [];
-  //   }
-  // }
 
   static async getStory(params) {
     if (!params) return {};

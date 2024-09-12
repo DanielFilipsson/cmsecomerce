@@ -28,7 +28,6 @@ export default function Latest({ blok }) {
                              className={`flex-shrink-0 w-full sm:w-1/2 md:w-1/3 transform transition-transform duration-500 ${
                                 index === 1 ? 'scale-110 z-10' : 'scale-90'
                             }`}
-                            //  className=" flex flex-col border p-2 rounded-md shadow-md w-full"
                              >
                              {item.image?.filename && (
                                   <div>

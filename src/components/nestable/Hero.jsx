@@ -14,31 +14,28 @@ export default function Hero({ blok }) {
           return 'bg-[#EFEDE3]'; 
         case 'white':
         default:
-          return 'bg-white';  // Vit som standardfärg
+          return 'bg-white'; 
       }
     })();
   
     const textColorClass = (() => {
       switch (blok.bgColor) {
         case 'green':
-          return 'text-black'; // Använder vit text för gröna och rosa bakgrunder
+          return 'text-black';
         case 'white':
         default:
-          return 'text-black'; // Svart text för vit bakgrund
+          return 'text-black'; 
       }
     })();
 
   return (
     <section 
-    // className="flex flex-col items-center justify-center w-full min-h-screen p-8 space-y-8 text-center"
     className={`flex flex-col items-center justify-center w-full min-h-screen p-8 pb-10 space-y-8 text-center ${bgColorClass}`}
     >
       <h1 
-    //   className="text-5xl font-bold text-black"
     className={`text-5xl font-bold ${textColorClass}`}
       >{blok.title || 'Default Title'}</h1>
       <p 
-    //   className="text-lg text-black"
     className={`text-lg ${textColorClass}`}
       >{blok.text || 'Default text description'}</p>
      <Link href={blok.heroButton.cached_url || '#'}>
