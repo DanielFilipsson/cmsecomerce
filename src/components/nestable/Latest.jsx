@@ -23,7 +23,7 @@ export default function Latest({ blok }) {
                 {/* Image container */}
                 <div className="flex justify-center w-full p-8 mb-4">    
                     <section className="flex flex-col h-auto sm:flex-row space-x-4 px-4 space-y-4 sm:space-y-0">
-                        {blok.latestImages.map((item, index) => (
+                        {blok.latestImages?.map((item, index) => (
                              <div key={item._uid} 
                              className={`flex-shrink-0 w-full sm:w-1/2 md:w-1/3 transform transition-transform duration-500 ${
                                 index === 1 ? 'scale-110 z-10' : 'scale-90'
