@@ -1,9 +1,37 @@
-import Link from 'next/link';
+"use client"
 
+import Link from 'next/link';
+import { useEffect, useState } from "react";
+import { getProducts } from "@/utils/cms"
 
 export default function Header({ blok }) {
 
-    // const { logo, logoText, headerNav } = blok?.content || {};
+    const [products, setProducts] = useState([]);
+    const [searchTerm, setSearchTerm] = useState(''); 
+    const [filteredProducts, setFilteredProducts] = useState([]);
+    const [tempSearchTerm, setTempSearchTerm] = useState('');
+
+    useEffect(() => {
+      async function fetchProducts() {
+        const fetchedProducts = await getProducts();
+        setProducts(fetchedProducts);
+      }
+      fetchProducts();
+    }, []);
+
+    useEffect(() => {
+        const results = products.filter((product) =>
+          product?.content?.productTitle?.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+        setFilteredProducts(results); // Uppdatera filtrerade produkter baserat på söktermen
+      }, [searchTerm, products]);
+
+      const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+          setSearchTerm(tempSearchTerm); // Uppdatera det faktiska sökordet
+        }
+      };
+    
     
     return (
         <header className="bg-white shadow-md p-4">
@@ -27,7 +55,9 @@ export default function Header({ blok }) {
                         type="text" 
                         placeholder="Search..." 
                         className="p-2 rounded-md bg-white border-transparent focus:border-gray-300 focus:ring-0 hover:border-gray-300 transition duration-300"
-                        // className="border border-gray-300 rounded-md p-2"
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        onKeyDown={handleKeyDown}
                     />
                 </div>
 
